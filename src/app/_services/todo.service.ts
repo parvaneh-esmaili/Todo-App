@@ -17,7 +17,7 @@ export class TodoService {
     return this.http.post<TodoForListModel>('https://todoapi.farinkavoshan.ir/api/Todo/Add', newNote)
   }
 
-editNote(id: number, data: Partial<TodoForListModel>, updatedNote: TodoForListModel): Observable<TodoForListModel> {
-  return this.http.put<TodoForListModel>('https://todoapi.farinkavoshan.ir/api/Todo/Put', updatedNote);
+  deleteNote(id: number): Observable<any> {
+   return this.http.get(`https://todoapi.farinkavoshan.ir/api/Todo/Remove/${id}`);
   }
 }

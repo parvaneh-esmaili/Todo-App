@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TodoForListModel, TodoForSaveModel } from '../../../../_models/todo.model';
 import { TodoService } from '../../../../_services/todo.service';
-import { NgFor } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-list',
@@ -13,8 +13,16 @@ import { FormsModule } from '@angular/forms';
 export class ListComponent {
   todos: TodoForListModel[] = [];
 
-  constructor(private todoService: TodoService ){
-    this.todoService.getNotes().subscribe(x =>{
-      this.todos = x })
+
+constructor(private todoService: TodoService) {
+  this.todoService.getNotes().subscribe(x => {
+    this.todos = x;
+  });
+}
+  deleteNote(id: number) {
+    this.todoService.deleteNote(id).subscribe(() => {
+      this.todos = this.todos.filter(notes => notes.id !== id);
+      alert('Note deleted successfully')
+    }); 
   }
 }

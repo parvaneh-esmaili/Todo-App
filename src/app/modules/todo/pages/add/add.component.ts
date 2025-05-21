@@ -5,10 +5,9 @@ import { TodoForSaveModel } from '../../../../_models/todo.model';
 
 @Component({
   selector: 'app-add',
-  standalone: true, // ✅ اگر استفاده می‌کنی، اضافه باشه
   imports: [FormsModule],
   templateUrl: './add.component.html',
-  styleUrls: ['./add.component.scss'] // ✅ املای درست: styleUrls
+  styleUrls: ['./add.component.scss']
 })
 export class AddComponent {
   newTodo: TodoForSaveModel = new TodoForSaveModel();
@@ -18,7 +17,8 @@ export class AddComponent {
   saveTodo() {
     this.todoService.addNote(this.newTodo).subscribe(response => {
       console.log('Todo saved:', response);
-      this.newTodo = new TodoForSaveModel(); // فرم رو پاک می‌کنه
-    });
+      this.newTodo = new TodoForSaveModel(); 
+      alert('Notes added successfully');
+        });
   }
 }
