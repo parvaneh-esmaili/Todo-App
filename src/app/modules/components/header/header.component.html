@@ -1,0 +1,9 @@
+<div class="h-16 bg-cyan-700 px-6 text-white font-semibold text-2xl flex justify-between items-center sticky top-0"> 
+  <div>TODO APP</div>
+  <div class="flex gap-6 ml-auto">
+    <div *ngFor="let items of menu">
+      <a [routerLink]="items.url" routerLinkActive="border-b-2 border-white" >{{ items.item }}</a>
+    </div>
+  </div>
+</div>
+
