@@ -11,14 +11,12 @@ import { TodoForSaveModel } from '../../../../_models/todo.model';
 })
 export class AddComponent {
   newTodo: TodoForSaveModel = new TodoForSaveModel();
-
   constructor(private todoService: TodoService) {}
 
   saveTodo() {
     this.todoService.addNote(this.newTodo).subscribe(response => {
-      console.log('Todo saved:', response);
       this.newTodo = new TodoForSaveModel(); 
-      alert('Notes added successfully');
-        });
+      alert('Your note added successfully');
+    });
   }
 }

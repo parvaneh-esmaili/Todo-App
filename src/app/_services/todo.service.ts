@@ -9,6 +9,7 @@ import { TodoForListModel, TodoForSaveModel } from '../_models/todo.model';
 export class TodoService {
 
   constructor(private http: HttpClient) { }
+
   getNotes(): Observable<TodoForListModel[]>{
     return this.http.get<TodoForListModel[]>('https://todoapi.farinkavoshan.ir/api/Todo/List')
   }
@@ -18,6 +19,9 @@ export class TodoService {
   }
 
   deleteNote(id: number): Observable<any> {
-   return this.http.get(`https://todoapi.farinkavoshan.ir/api/Todo/Remove/${id}`);
+    return this.http.get(`https://todoapi.farinkavoshan.ir/api/Todo/Remove/${id}`);
+  }
+  update(note: TodoForListModel): Observable<TodoForListModel> {
+    return this.http.post<TodoForListModel>(`https://todoapi.farinkavoshan.ir/api/Todo/Update/${note.id}`,note);
   }
 }
