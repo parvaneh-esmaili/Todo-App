@@ -13,4 +13,8 @@ export class HeaderComponent {
     { item: 'List', url: './list' },
     { item: 'Add', url: '/add' }
   ];
+toggleDarkMode() {
+  document.body.classList.toggle('dark');
+}
+
 }
