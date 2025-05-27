@@ -1,29 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoForListModel } from '../../../../_models/todo.model';
 import { TodoService } from '../../../../_services/todo.service';
-import { NgClass, NgFor} from '@angular/common';
+import { CommonModule, NgClass, NgFor} from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { of } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [NgFor, FormsModule, NgClass],
+  imports: [NgFor, FormsModule, NgClass,MatIconModule,CommonModule],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
 })
 export class ListComponent implements OnInit {
   todos: TodoForListModel[] = [];
   selectedId: number | null = null;
-  date = new Date();
+  today: Date = new Date();
+
+  
 
   constructor(private todoService: TodoService) {}
 
 ngOnInit() {
   this.todoService.getNotes().pipe(
     map(data => data || []),
-    startWith([{ id: 0, title: 'Loading your data, please wait...', description: '', date: this.date } as TodoForListModel])
+    startWith([{ id: 0, title: 'Loading your data, please wait...', description: '', date: this.today } as TodoForListModel])
   ).subscribe(data => {
     this.todos = data;
   });

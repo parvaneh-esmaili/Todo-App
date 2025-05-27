@@ -8,9 +8,9 @@
 
     <!-- title & date -->
     <div class="flex justify-between items-center mb-4">
-      <h1 class="text-2xl font-semibold text-cyan-900 dark:text-cyan-200">{{ notes.title }}</h1>
-      <div class="text-xs bg-blue-100 text-cyan-900 h-8 min-w-16 px-4 py-2 rounded-lg border border-blue-300 dark:bg-blue-900 dark:text-cyan-100 dark:border-blue-600">
-        {{ notes.date }}
+      <h1 class="text-2xl font-semibold text-cyan-950 dark:text-cyan-200">{{ notes.title }}</h1>
+      <div class="text-base bg-blue-100 text-cyan-950 h-19 min-w-16 px-4 py-1 rounded-lg border border-blue-300 dark:bg-blue-900 dark:text-cyan-100 dark:border-blue-600">
+        {{ today | date:'mediumDate' }}
       </div>
     </div>
 
@@ -20,14 +20,15 @@
     <!-- buttons -->
     <div class="flex justify-end space-x-3">
       <button 
-        class="w-24 py-2 text-sm font-medium bg-white text-blue-600 border border-blue-300 rounded-lg hover:bg-blue-600 hover:text-white duration-300 dark:bg-gray-700 dark:text-blue-300 dark:border-blue-700 dark:hover:bg-blue-700 dark:hover:text-white">
+        class="w-24 py-2 text-sm bg-white text-blue-600 border border-blue-300 rounded-lg active:scale-95  hover:bg-blue-600 hover:text-white duration-300 dark:bg-gray-700 dark:text-blue-300 dark:border-blue-700 dark:hover:bg-blue-700 dark:hover:text-white">
         Edit
       </button>
       <button 
-        class="w-24 py-2 text-sm font-medium bg-white text-red-500 border border-red-300 rounded-lg hover:bg-red-500 hover:text-white duration-300 dark:bg-gray-700 dark:text-red-400 dark:border-red-700 dark:hover:bg-red-700 dark:hover:text-white"
+        class="w-24 py-2 text-sm bg-white text-red-500 border border-red-300 rounded-lg active:scale-95 hover:bg-red-500 hover:text-white duration-300 dark:bg-gray-700 dark:text-red-400 dark:border-red-700 dark:hover:bg-red-700 dark:hover:text-white"
         (click)="deleteNote(notes.id)">
         Delete
       </button>
     </div>
   </div>
 </div>
+
