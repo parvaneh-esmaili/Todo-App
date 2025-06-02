@@ -7,21 +7,24 @@ import { TodoForListModel, TodoForSaveModel } from '../_models/todo.model';
   providedIn: 'root'
 })
 export class TodoService {
+  private apiUrl = 'http://localhost:3000/todos'; 
 
   constructor(private http: HttpClient) { }
 
-  getNotes(): Observable<TodoForListModel[]>{
-    return this.http.get<TodoForListModel[]>('https://todoapi.farinkavoshan.ir/api/Todo/List')
+  getNotes(): Observable<TodoForListModel[]> {
+    return this.http.get<TodoForListModel[]>(this.apiUrl);
   }
 
   addNote(newNote: TodoForSaveModel): Observable<TodoForListModel> {
-    return this.http.post<TodoForListModel>('https://todoapi.farinkavoshan.ir/api/Todo/Add', newNote)
+    return this.http.post<TodoForListModel>(this.apiUrl, newNote);
   }
 
   deleteNote(id: number): Observable<any> {
-    return this.http.get(`https://todoapi.farinkavoshan.ir/api/Todo/Remove/${id}`);
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
+
   update(note: TodoForListModel): Observable<TodoForListModel> {
-    return this.http.post<TodoForListModel>(`https://todoapi.farinkavoshan.ir/api/Todo/Update/${note.id}`,note);
+    return this.http.patch<TodoForListModel>(`${this.apiUrl}/${note.id}`, note);
   }
 }
+

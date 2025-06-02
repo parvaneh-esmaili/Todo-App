@@ -15,7 +15,7 @@
     </div>
 
     <!-- description -->
-    <p class="text-gray-700 text-sm mb-4 dark:text-gray-300">{{ notes.description }}</p>
+    <p class="text-gray-700 text-sm mb-4 dark:text-gray-300" *ngIf="notes.description">{{ notes.description }}</p>
 
     <!-- buttons -->
     <div class="flex justify-end space-x-3">

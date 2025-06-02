@@ -1,14 +1,16 @@
 <div class="h-16 bg-cyan-700 px-6 text-white font-semibold text-2xl flex justify-between items-center sticky top-0"> 
-  <div>TODO APP</div>
-<button (click)="toggleDarkMode()" 
-  class="w-28 py-2 mx-6 bg-cyan-700 text-white text-sm font-semibold rounded-xl border border-white hover:bg-cyan-800 active:scale-95 duration-300">
-  Dark Mode</button>
 
+  <div>TODO APP</div>
+  <button (click)="toggleDarkMode()" 
+  class="w-10 h-10 mx-4 bg-cyan-700 text-gray-800 dark:text-white text-xl font-semibold rounded-xl border hover:bg-cyan-800 active:scale-95 duration-300">
+  &#9728;</button>
   <div class="flex gap-6 ml-auto">
     <div *ngFor="let items of menu">
       <a [routerLink]="items.url" routerLinkActive="border-b-2 border-white">{{ items.item }}</a>
     </div>
   </div>
+  <p></p>
 </div>
+
 
 
